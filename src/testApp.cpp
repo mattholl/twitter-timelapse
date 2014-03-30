@@ -34,13 +34,20 @@ void testApp::update(){
     
     if (weConnected) {
         if(tcpClient.send(msgTx)) {
+            
+//            cout << ofToString(str) << endl;
+            
             string str = tcpClient.receive();
+            
             if(str.length() > 0) {
+                
                 msgRx = str;
             }
         } else if(!tcpClient.isConnected()) {
             weConnected = false;
         }
+
+        
     } else {
         deltaTime = ofGetElapsedTimeMillis() - connectTime;
         
@@ -66,12 +73,13 @@ void testApp::draw(){
         if (weConnected) {
             ofDrawBitmapString("status: type something to send to port 3001", 15, 55);
         } else {
-            ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString(5000 - deltaTime / 1000) + " seconds.", 15, 55);
+            ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString((5000 - deltaTime) / 1000) + " seconds.", 15, 55);
             
         }
-        
-        ofDrawBitmapString("From server: " + msgRx, 15, 270);
+    
     }
+    
+    ofDrawBitmapString("From server: " + msgRx, 15, 270);
 }
 
 //--------------------------------------------------------------
