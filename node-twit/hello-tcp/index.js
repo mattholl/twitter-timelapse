@@ -8,6 +8,14 @@ net.createServer(function(socket) {
         socket.write("yo");
     });
 
+    socket.on('data', function(data) {
+        var msg = data.toString();
+
+        if(msg !== "\n") {
+            console.log(msg);
+        }
+    });
+
     socket.on('error', function(error) {
         console.log(error);
     });
