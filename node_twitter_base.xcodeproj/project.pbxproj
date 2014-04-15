@@ -31,6 +31,8 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		EC43B95E18FDD37600693E32 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = EC43B95918FDD37600693E32 /* index.js */; };
+		EC43B95F18FDD37600693E32 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = EC43B95D18FDD37600693E32 /* index.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,9 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		EC09047A18E4CE35009505D6 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.md; sourceTree = SOURCE_ROOT; };
+		EC43B95918FDD37600693E32 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		EC43B95B18FDD37600693E32 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		EC43B95D18FDD37600693E32 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		F399B91E98DC31CDA6DDACB4 /* ofxTCPManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTCPManager.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPManager.cpp; sourceTree = SOURCE_ROOT; };
 		F66993296A3AEEC70FD444F5 /* ofxNetwork.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNetwork.h; path = ../../../addons/ofxNetwork/src/ofxNetwork.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -246,9 +251,28 @@
 		EC09047918E4CE35009505D6 /* node-twit */ = {
 			isa = PBXGroup;
 			children = (
+				EC43B95818FDD37600693E32 /* hello-tcp */,
+				EC43B95C18FDD37600693E32 /* random-json-tcp */,
 			);
 			path = "node-twit";
 			sourceTree = SOURCE_ROOT;
+		};
+		EC43B95818FDD37600693E32 /* hello-tcp */ = {
+			isa = PBXGroup;
+			children = (
+				EC43B95918FDD37600693E32 /* index.js */,
+				EC43B95B18FDD37600693E32 /* package.json */,
+			);
+			path = "hello-tcp";
+			sourceTree = "<group>";
+		};
+		EC43B95C18FDD37600693E32 /* random-json-tcp */ = {
+			isa = PBXGroup;
+			children = (
+				EC43B95D18FDD37600693E32 /* index.js */,
+			);
+			path = "random-json-tcp";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -340,7 +364,9 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				960D20B191346612D5C05A6A /* ofxTCPClient.cpp in Sources */,
+				EC43B95F18FDD37600693E32 /* index.js in Sources */,
 				125506CD3E5F428AAFE5CC65 /* ofxTCPManager.cpp in Sources */,
+				EC43B95E18FDD37600693E32 /* index.js in Sources */,
 				66CA411C5A9664E27326BF36 /* ofxTCPServer.cpp in Sources */,
 				E2564CF7DDB3713772BB682E /* ofxUDPManager.cpp in Sources */,
 			);
