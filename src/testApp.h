@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxNetwork.h"
+#include "ofxJSONElement.h"
 
 class testApp : public ofBaseApp{
 
@@ -35,5 +36,7 @@ public:
     int size;
     int pos;
     bool typed;
+    
+    ofxJSONElement result;
 		
 };
