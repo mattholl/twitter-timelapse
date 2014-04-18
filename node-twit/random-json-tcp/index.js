@@ -6,7 +6,12 @@ var port = 3001;
 net.createServer(function(socket) {
 
     var numInterval = setInterval(function() {
-        socket.write(Math.random() + '\n');
+        var testJSON = {
+            x : Math.random(),
+            y : Math.random(),
+            z : Math.random()
+        };
+        socket.write(JSON.stringify(testJSON) + '\n');
     });
 
     socket.on('connection', function() {

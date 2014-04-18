@@ -8,14 +8,10 @@ void testApp::setup(){
     // don't run too fast(?);
     ofSetVerticalSync(true);
     
-    // something typed
-    typed = false;
-    // typing position
-    pos = 0;
-    
-    // send and receive strings
-    msgTx = "";
-    msgRx = "";
+    // Initial values for x, y, z
+    incomingX = 0.0;
+    incomingY = 0.0;
+    incomingZ = 0.0;
     
     // try to connect if it fails retry every few seconds
     weConnected = tcpClient.setup("127.0.0.1", 3001);
@@ -26,7 +22,7 @@ void testApp::setup(){
     
     tcpClient.setVerbose(true);
     
-    tcpClient.send("client connecting");
+    tcpClient.send("client connected");
 }
 
 //--------------------------------------------------------------
@@ -34,14 +30,23 @@ void testApp::update(){
     
     ofBackground(230, 230, 230);
     
+    // Update incoming values with JSON values from node.js TCP server
+    
     if (weConnected) {
         if(tcpClient.isConnected()) {
             string str = tcpClient.receive();
             
             if(str.length() > 0) {
                 
-                msgRx = str;
+                bool parsed = geoData.parse(str);
+                
+                if (parsed) {
+                    incomingX = geoData["x"].asDouble();
+                    incomingY = geoData["y"].asDouble();
+                    incomingZ = geoData["z"].asDouble();
+                }
             }
+            
         } else {
             weConnected = false;
         }
@@ -67,7 +72,9 @@ void testApp::draw(){
         ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString((5000 - deltaTime) / 1000) + " seconds.", 15, 55);
     }
     
-    ofDrawBitmapString("From server: " + msgRx, 15, 270);
+    ofDrawBitmapString("From server X: " + ofToString(incomingX, 17), 15, 270);
+    ofDrawBitmapString("From server Y: " + ofToString(incomingY, 17), 15, 290);
+    ofDrawBitmapString("From server Z: " + ofToString(incomingZ, 17), 15, 310);
 }
 
 //--------------------------------------------------------------

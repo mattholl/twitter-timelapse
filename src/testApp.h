@@ -20,23 +20,21 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
-
+    
+    // TCP Client
     ofxTCPClient tcpClient;
-    string msgTx, msgRx;
     
     ofTrueTypeFont mono;
     ofTrueTypeFont monosm;
     
-    float counter;
     int connectTime;
     int deltaTime;
-    
     bool weConnected;
     
-    int size;
-    int pos;
-    bool typed;
+    // Incoming JSON parse
+    double incomingX, incomingY, incomingZ;
+    ofxJSONElement geoData;
     
-    ofxJSONElement result;
+    // Set up spring objects
 		
 };
