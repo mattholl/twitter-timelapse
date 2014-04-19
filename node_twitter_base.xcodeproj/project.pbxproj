@@ -32,6 +32,7 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 		EC06B5851902DFAB00DB7BE7 /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC06B5831902DFAB00DB7BE7 /* Spring.cpp */; };
+		EC06B58A1902F2B700DB7BE7 /* Params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC06B5881902F2B700DB7BE7 /* Params.cpp */; };
 		EC43B95E18FDD37600693E32 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = EC43B95918FDD37600693E32 /* index.js */; };
 		EC43B95F18FDD37600693E32 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = EC43B95D18FDD37600693E32 /* index.js */; };
 		EC43B9FA18FF290600693E32 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E118FF290600693E32 /* json_reader.cpp */; };
@@ -105,6 +106,8 @@
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		EC06B5831902DFAB00DB7BE7 /* Spring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spring.cpp; sourceTree = "<group>"; };
 		EC06B5841902DFAB00DB7BE7 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
+		EC06B5881902F2B700DB7BE7 /* Params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Params.cpp; sourceTree = "<group>"; };
+		EC06B5891902F2B700DB7BE7 /* Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.h; sourceTree = "<group>"; };
 		EC09047A18E4CE35009505D6 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.md; sourceTree = SOURCE_ROOT; };
 		EC43B95918FDD37600693E32 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		EC43B95B18FDD37600693E32 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				EC06B5831902DFAB00DB7BE7 /* Spring.cpp */,
 				EC06B5841902DFAB00DB7BE7 /* Spring.h */,
+				EC06B5881902F2B700DB7BE7 /* Params.cpp */,
+				EC06B5891902F2B700DB7BE7 /* Params.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -466,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC43B9FA18FF290600693E32 /* json_reader.cpp in Sources */,
+				EC06B58A1902F2B700DB7BE7 /* Params.cpp in Sources */,
 				EC06B5851902DFAB00DB7BE7 /* Spring.cpp in Sources */,
 				EC43B9FD18FF290600693E32 /* ofxJSONElement.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "testApp.h"
 
 #define RECONNECT_TIME = 400;
@@ -25,10 +27,13 @@ void testApp::setup(){
     
     tcpClient.send("client connected");
     
-    // Spring objects setup
-    
     // each one needs a different colour
+    param.setup();
     
+    cout << "REST LENGTH: " + ofToString(param.restLength) << endl;
+    cout << "MAX FORCE: " + ofToString(param.maxForce) << endl;
+    
+    // Spring objects setup
 }
 
 //--------------------------------------------------------------
