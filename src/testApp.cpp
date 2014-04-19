@@ -8,6 +8,7 @@ void testApp::setup(){
     // don't run too fast(?);
     ofSetVerticalSync(true);
     
+    // TCP Connection
     // Initial values for x, y, z
     incomingX = 0.0;
     incomingY = 0.0;
@@ -23,6 +24,11 @@ void testApp::setup(){
     tcpClient.setVerbose(true);
     
     tcpClient.send("client connected");
+    
+    // Spring objects setup
+    
+    // each one needs a different colour
+    
 }
 
 //--------------------------------------------------------------
