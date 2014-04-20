@@ -35,7 +35,10 @@ void testApp::setup(){
     
     // Spring objects setup
     Spring spring1;
+    
     // Set spring1 colour and any vars
+    // any setup
+    
     springs.push_back(spring1);
     
     Spring spring2;
@@ -64,12 +67,15 @@ void testApp::update(){
                 bool parsed = geoData.parse(str);
                 
                 if (parsed) {
-                    incomingX = geoData["x"].asDouble();
-                    incomingY = geoData["y"].asDouble();
-                    incomingZ = geoData["z"].asDouble();
+                    incomingX = geoData["x"].asFloat();
+                    incomingY = geoData["y"].asFloat();
+                    incomingZ = geoData["z"].asFloat();
                     
-                    // Loop over springs
                     // pass incoming in to springs [1] [2] [3]
+                    springs[0].update(incomingX, incomingY);
+                    springs[1].update(incomingY, incomingZ);
+                    springs[2].update(incomingX, incomingZ);
+                    
                 }
             }
             
@@ -100,18 +106,14 @@ void testApp::draw(){
 //        ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString((5000 - deltaTime) / 1000) + " seconds.", 15, 55);
 //    }
 //    
-//    ofDrawBitmapString("From server X: " + ofToString(incomingX, 17), 15, 270);
-//    ofDrawBitmapString("From server Y: " + ofToString(incomingY, 17), 15, 290);
-//    ofDrawBitmapString("From server Z: " + ofToString(incomingZ, 17), 15, 310);
+    ofDrawBitmapString("From server X: " + ofToString(incomingX, 17), 15, 270);
+    ofDrawBitmapString("From server Y: " + ofToString(incomingY, 17), 15, 290);
+    ofDrawBitmapString("From server Z: " + ofToString(incomingZ, 17), 15, 310);
     
-//    int i = 0;
-//    
-//    while (i < springs.size()) {
-//        
-//        springs[i].draw();
-//        
-//    }
-    
+    ofFill();
+    for(int i = 0; i < springs.size(); i++) {
+        springs[i].draw();
+    }
 }
 
 //--------------------------------------------------------------
@@ -121,7 +123,8 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    // @TODO
+    // for space save image
 }
 
 //--------------------------------------------------------------

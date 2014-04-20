@@ -25,9 +25,9 @@ public:
     ofVec2f targetVector;
     
     void setColour(ofColor color);
-    void seek(ofVec2f targetVector);
+    void seek(ofVec2f targetVec);
     void applyForce(ofVec2f force);
     void centrePull();
-    void update();
+    void update(float first, float second);
     void draw();
 };
