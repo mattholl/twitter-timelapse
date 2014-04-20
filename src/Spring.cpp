@@ -21,22 +21,22 @@ void Spring::setColour(ofColor color) {
 
 void Spring::seek() {
     
-    ofVec2f desiredVec = this->location - this->targetVector;
+    ofVec2f desiredVec = location - targetVector;
     desiredVec.normalize();
     desiredVec.scale(param.maxSpeed);
     
-    ofVec2f steer = this->velocity - desiredVec;
+    ofVec2f steer = velocity - desiredVec;
     
     if(steer.length() > param.maxForce) {
         steer.normalize();
         steer.scale(param.maxForce);
     }
     
-    this->applyForce(steer);
+    applyForce(steer);
 }
 
 void Spring::applyForce(ofVec2f force) {
-    this->acceleration += force;
+    acceleration += force;
 }
 
 void Spring::centrePull() {
@@ -55,34 +55,34 @@ void Spring::centrePull() {
         
         force.normalize();
         force.scale(-1.0 * param.k * stretch);
-        this->applyForce(force);
+        applyForce(force);
     }
     
 }
 
 void Spring::update(float first, float second) {
     // Set target vector from first and second as x and y
-    this->targetVector.set(first, second);
+    targetVector.set(first, second);
     
     // Call centrePull function
-    this->centrePull();
+    centrePull();
     
     // Seek the target vector
-    this->seek();
+    seek();
     
     // velocity.add acceleration
-    this->velocity += this->acceleration;
+    velocity += acceleration;
     
     // Limit to maxspeed
     
-    if(this->velocity.length() > param.maxSpeed) {
-        this->velocity.normalize();
-        this->velocity.scale(param.maxSpeed);
+    if(velocity.length() > param.maxSpeed) {
+        velocity.normalize();
+        velocity.scale(param.maxSpeed);
     }
 
     // Apply the velocity to location and scale back the acceleration for next update
-    this->location += this->velocity;
-    this->acceleration.scale(0);
+    location += velocity;
+    acceleration.scale(0);
 
 }
 
@@ -99,7 +99,7 @@ void Spring::draw() {
 //    location.set(100.0, 100.0);
     
     // draw circle at the end
-    ofCircle(this->location, size);
+    ofCircle(location, size);
     
     
     // draw line from window centre to point
