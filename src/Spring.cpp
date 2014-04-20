@@ -11,12 +11,12 @@
 #include "Params.h"
 
 Spring::Spring() {
-    // Any setup
+    location.x = ofGetWindowWidth() / 2;
+    location.y = ofGetWindowHeight() / 2;
 }
-// param.something
 
-void Spring::setColour(ofColor color) {
-    this->color = color;
+void Spring::setColour(ofColor colour) {
+    this->colour = colour;
 }
 
 void Spring::seek() {
@@ -93,8 +93,7 @@ void Spring::draw() {
     
     // set colour to this->colour
     
-    ofColor color = ofColor::red;
-    ofSetColor(color);
+    ofSetColor(this->colour);
     
     int size = 5;
     

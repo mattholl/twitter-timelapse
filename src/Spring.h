@@ -18,7 +18,7 @@
 class Spring {
 public:
     Spring();
-    ofColor color;
+    ofColor colour;
     ofVec2f location;
     ofVec2f velocity;
     ofVec2f acceleration;

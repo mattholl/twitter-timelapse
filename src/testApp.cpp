@@ -10,6 +10,14 @@ void testApp::setup(){
     // don't run too fast(?);
     ofSetVerticalSync(true);
     
+    ofEnableSmoothing();
+    
+    // Disable automatic background clearing
+    ofSetBackgroundAuto(false);
+    
+    // Clear the background to white once
+    ofBackground(255, 255, 255);
+    
     // TCP Connection
     // Initial values for x, y, z
     incomingX = 0.0;
@@ -30,31 +38,27 @@ void testApp::setup(){
     // each one needs a different colour
     param.setup();
     
-    //cout << "REST LENGTH: " + ofToString(param.restLength) << endl;
-    //cout << "MAX FORCE: " + ofToString(param.maxForce) << endl;
-    
     // Spring objects setup
+    // Set colours
     Spring spring1;
-    
-    // Set spring1 colour and any vars
-    // any setup
-    
+    ofColor colour1(0, 80, 108, 10); //#00506C - dark green-blue? //10 alpha
+    spring1.setColour(colour1);
     springs.push_back(spring1);
     
     Spring spring2;
-    
+    ofColor colour2(161, 219, 217, 10); //A9DBD9
+    spring2.setColour(colour2);
     springs.push_back(spring2);
     
     Spring spring3;
-    
+    ofColor colour3(0, 141, 150, 10); //#008D96 // alpha 10
+    spring3.colour = colour3;
     springs.push_back(spring3);
     
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
-    ofBackground(230, 230, 230);
     
     // Update incoming values with JSON values from node.js TCP server
     
@@ -102,22 +106,23 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
+    ofEnableAlphaBlending();
     ofSetColor(20, 20, 20);
-//    ofDrawBitmapString("openFrameworks TCP send example", 15, 30);
-//    
-//    if (!weConnected) {
-//        ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString((5000 - deltaTime) / 1000) + " seconds.", 15, 55);
-//    }
-//    
-    ofDrawBitmapString("From server X: " + ofToString(incomingX, 17), 15, 270);
-    ofDrawBitmapString("From server Y: " + ofToString(incomingY, 17), 15, 290);
-    ofDrawBitmapString("From server Z: " + ofToString(incomingZ, 17), 15, 310);
+
+    if (!weConnected) {
+        cout << "status: server not found" << endl;
+    }
+    
+    cout << "X : " + ofToString(incomingX, 17) << endl;
+    cout << "Y : " + ofToString(incomingY, 17) << endl;
+    cout << "Z : " + ofToString(incomingZ, 17) << endl;
     
     ofFill();
     for(int i = 0; i < springs.size(); i++) {
         springs[i].draw();
     }
+    
+    ofDisableAlphaBlending();
 }
 
 //--------------------------------------------------------------
