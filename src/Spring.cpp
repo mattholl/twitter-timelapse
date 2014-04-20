@@ -42,7 +42,7 @@ void Spring::applyForce(ofVec2f force) {
 void Spring::centrePull() {
     
     // Get centre as vec2
-    ofVec2f centre(ofGetWindowWidth(), ofGetWindowHeight());
+    ofVec2f centre(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
     
     ofVec2f force = location - centre;
     float distance = force.length();
@@ -60,9 +60,12 @@ void Spring::centrePull() {
     
 }
 
-void Spring::update(float first, float second) {
+void Spring::setTargetVec(float first, float second) {
     // Set target vector from first and second as x and y
     targetVector.set(first, second);
+}
+
+void Spring::update() {
     
     // Call centrePull function
     centrePull();
@@ -95,12 +98,11 @@ void Spring::draw() {
     
     int size = 5;
     
-    // for test
-//    location.set(100.0, 100.0);
+    ofVec2f centre(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
     
     // draw circle at the end
     ofCircle(location, size);
-    
+    ofLine(location, centre);
     
     // draw line from window centre to point
 

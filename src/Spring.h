@@ -28,6 +28,7 @@ public:
     void seek();
     void applyForce(ofVec2f force);
     void centrePull();
-    void update(float first, float second);
+    void setTargetVec(float first, float second);
+    void update();
     void draw();
 };

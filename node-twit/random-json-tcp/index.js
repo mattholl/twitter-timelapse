@@ -12,7 +12,7 @@ net.createServer(function(socket) {
             z : Math.random()
         };
         socket.write(JSON.stringify(testJSON) + '\n');
-    });
+    }, 1000);
 
     socket.on('connection', function() {
         console.log('client connected');
