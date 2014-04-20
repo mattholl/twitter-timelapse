@@ -19,8 +19,20 @@ void Spring::setColour(ofColor color) {
     this->color = color;
 }
 
-void Spring::seek(ofVec2f targetVec) {
+void Spring::seek() {
     
+    ofVec2f desiredVec = this->location - this->targetVector;
+    desiredVec.normalize();
+    desiredVec.scale(param.maxSpeed);
+    
+    ofVec2f steer = this->velocity - desiredVec;
+    
+    if(steer.length() > param.maxForce) {
+        steer.normalize();
+        steer.scale(param.maxForce);
+    }
+    
+    this->applyForce(steer);
 }
 
 void Spring::applyForce(ofVec2f force) {
@@ -50,23 +62,28 @@ void Spring::centrePull() {
 
 void Spring::update(float first, float second) {
     // Set target vector from first and second as x and y
-    targetVector.set(first, second);
+    this->targetVector.set(first, second);
     
     // Call centrePull function
     this->centrePull();
     
     // Seek the target vector
+    this->seek();
     
     // velocity.add acceleration
+    this->velocity += this->acceleration;
     
-//    if(this.velocity.length() > this.maxSpeed) {
-//        this.velocity.normalize();
-//        this.velocity.scale(this.maxSpeed);
-//    }
-//    
-//    this.location.add(this.velocity);
-//    this.acceleration.scale(0);
+    // Limit to maxspeed
     
+    if(this->velocity.length() > param.maxSpeed) {
+        this->velocity.normalize();
+        this->velocity.scale(param.maxSpeed);
+    }
+
+    // Apply the velocity to location and scale back the acceleration for next update
+    this->location += this->velocity;
+    this->acceleration.scale(0);
+
 }
 
 void Spring::draw() {
@@ -79,7 +96,7 @@ void Spring::draw() {
     int size = 5;
     
     // for test
-    location.set(100.0, 100.0);
+//    location.set(100.0, 100.0);
     
     // draw circle at the end
     ofCircle(this->location, size);
