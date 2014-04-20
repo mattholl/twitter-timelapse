@@ -18,6 +18,16 @@
 class Spring {
 public:
     Spring();
+    ofColor color;
+    ofVec2f location;
+    ofVec2f velocity;
+    ofVec2f acceleration;
+    ofVec2f targetVector;
+    
+    void setColour(ofColor color);
+    void seek(ofVec2f targetVector);
+    void applyForce(ofVec2f force);
+    void centrePull();
     void update();
     void draw();
 };

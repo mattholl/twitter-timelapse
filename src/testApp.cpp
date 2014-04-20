@@ -30,10 +30,22 @@ void testApp::setup(){
     // each one needs a different colour
     param.setup();
     
-    cout << "REST LENGTH: " + ofToString(param.restLength) << endl;
-    cout << "MAX FORCE: " + ofToString(param.maxForce) << endl;
+    //cout << "REST LENGTH: " + ofToString(param.restLength) << endl;
+    //cout << "MAX FORCE: " + ofToString(param.maxForce) << endl;
     
     // Spring objects setup
+    Spring spring1;
+    // Set spring1 colour and any vars
+    springs.push_back(spring1);
+    
+    Spring spring2;
+    
+    springs.push_back(spring2);
+    
+    Spring spring3;
+    
+    springs.push_back(spring3);
+    
 }
 
 //--------------------------------------------------------------
@@ -55,6 +67,9 @@ void testApp::update(){
                     incomingX = geoData["x"].asDouble();
                     incomingY = geoData["y"].asDouble();
                     incomingZ = geoData["z"].asDouble();
+                    
+                    // Loop over springs
+                    // pass incoming in to springs [1] [2] [3]
                 }
             }
             
@@ -71,21 +86,32 @@ void testApp::update(){
         }
     }
     
+
+    
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
     ofSetColor(20, 20, 20);
-    ofDrawBitmapString("openFrameworks TCP send example", 15, 30);
+//    ofDrawBitmapString("openFrameworks TCP send example", 15, 30);
+//    
+//    if (!weConnected) {
+//        ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString((5000 - deltaTime) / 1000) + " seconds.", 15, 55);
+//    }
+//    
+//    ofDrawBitmapString("From server X: " + ofToString(incomingX, 17), 15, 270);
+//    ofDrawBitmapString("From server Y: " + ofToString(incomingY, 17), 15, 290);
+//    ofDrawBitmapString("From server Z: " + ofToString(incomingZ, 17), 15, 310);
     
-    if (!weConnected) {
-        ofDrawBitmapString("status: server not found\n\nReconnecting in " + ofToString((5000 - deltaTime) / 1000) + " seconds.", 15, 55);
-    }
+//    int i = 0;
+//    
+//    while (i < springs.size()) {
+//        
+//        springs[i].draw();
+//        
+//    }
     
-    ofDrawBitmapString("From server X: " + ofToString(incomingX, 17), 15, 270);
-    ofDrawBitmapString("From server Y: " + ofToString(incomingY, 17), 15, 290);
-    ofDrawBitmapString("From server Z: " + ofToString(incomingZ, 17), 15, 310);
 }
 
 //--------------------------------------------------------------

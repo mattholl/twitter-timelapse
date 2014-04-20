@@ -38,5 +38,5 @@ public:
     ofxJSONElement geoData;
     
     // Set up spring objects
-    //vector<Spring> springs;
+    vector<Spring> springs;
 };
