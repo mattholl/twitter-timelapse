@@ -33,8 +33,6 @@
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 		EC06B5851902DFAB00DB7BE7 /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC06B5831902DFAB00DB7BE7 /* Spring.cpp */; };
 		EC06B58A1902F2B700DB7BE7 /* Params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC06B5881902F2B700DB7BE7 /* Params.cpp */; };
-		EC43B95E18FDD37600693E32 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = EC43B95918FDD37600693E32 /* index.js */; };
-		EC43B95F18FDD37600693E32 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = EC43B95D18FDD37600693E32 /* index.js */; };
 		EC43B9FA18FF290600693E32 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E118FF290600693E32 /* json_reader.cpp */; };
 		EC43B9FB18FF290600693E32 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E318FF290600693E32 /* json_value.cpp */; };
 		EC43B9FC18FF290600693E32 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E518FF290600693E32 /* json_writer.cpp */; };
@@ -109,9 +107,6 @@
 		EC06B5881902F2B700DB7BE7 /* Params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Params.cpp; sourceTree = "<group>"; };
 		EC06B5891902F2B700DB7BE7 /* Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.h; sourceTree = "<group>"; };
 		EC09047A18E4CE35009505D6 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.md; sourceTree = SOURCE_ROOT; };
-		EC43B95918FDD37600693E32 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
-		EC43B95B18FDD37600693E32 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
-		EC43B95D18FDD37600693E32 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		EC43B9D518FF290600693E32 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
 		EC43B9D618FF290600693E32 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		EC43B9D718FF290600693E32 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
@@ -253,7 +248,6 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				EC09047918E4CE35009505D6 /* node-twit */,
 				EC09047A18E4CE35009505D6 /* notes.md */,
 				E4B69B5B0A3A1756003C02F2 /* node_twitter_baseDebug.app */,
 			);
@@ -280,32 +274,6 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
-			sourceTree = "<group>";
-		};
-		EC09047918E4CE35009505D6 /* node-twit */ = {
-			isa = PBXGroup;
-			children = (
-				EC43B95818FDD37600693E32 /* hello-tcp */,
-				EC43B95C18FDD37600693E32 /* random-json-tcp */,
-			);
-			path = "node-twit";
-			sourceTree = SOURCE_ROOT;
-		};
-		EC43B95818FDD37600693E32 /* hello-tcp */ = {
-			isa = PBXGroup;
-			children = (
-				EC43B95918FDD37600693E32 /* index.js */,
-				EC43B95B18FDD37600693E32 /* package.json */,
-			);
-			path = "hello-tcp";
-			sourceTree = "<group>";
-		};
-		EC43B95C18FDD37600693E32 /* random-json-tcp */ = {
-			isa = PBXGroup;
-			children = (
-				EC43B95D18FDD37600693E32 /* index.js */,
-			);
-			path = "random-json-tcp";
 			sourceTree = "<group>";
 		};
 		EC43B98418FF290400693E32 /* ofxJSON */ = {
@@ -477,9 +445,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				960D20B191346612D5C05A6A /* ofxTCPClient.cpp in Sources */,
-				EC43B95F18FDD37600693E32 /* index.js in Sources */,
 				125506CD3E5F428AAFE5CC65 /* ofxTCPManager.cpp in Sources */,
-				EC43B95E18FDD37600693E32 /* index.js in Sources */,
 				EC43B9FC18FF290600693E32 /* json_writer.cpp in Sources */,
 				66CA411C5A9664E27326BF36 /* ofxTCPServer.cpp in Sources */,
 				EC43B9FB18FF290600693E32 /* json_value.cpp in Sources */,

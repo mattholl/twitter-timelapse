@@ -1,0 +1,15 @@
+{
+  "name": "node-twit",
+  "version": "0.0.0",
+  "description": "Parse geodata from the twitter streaming api.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "twitter": "~0.2.9",
+    "commander": "~2.2.0"
+  }
+}
