@@ -95,7 +95,7 @@ void Spring::draw() {
     
     ofSetColor(this->colour);
     
-    int size = 5;
+    int size = 1;
     
     ofVec2f centre(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
     
