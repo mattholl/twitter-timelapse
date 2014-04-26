@@ -137,7 +137,7 @@ void testApp::keyReleased(int key){
     if(key == 's') {
         ofImage image;
         image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
-        image.saveImage("screen.png");
+        image.saveImage("frame_" + ofToString(ofGetFrameNum()) + "_high.png");
     }
 }
 
