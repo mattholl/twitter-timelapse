@@ -113,9 +113,9 @@ void testApp::draw(){
         cout << "status: server not found" << endl;
     }
     
-    cout << "X : " + ofToString(incomingX, 17) << endl;
-    cout << "Y : " + ofToString(incomingY, 17) << endl;
-    cout << "Z : " + ofToString(incomingZ, 17) << endl;
+//    cout << "X : " + ofToString(incomingX, 17) << endl;
+//    cout << "Y : " + ofToString(incomingY, 17) << endl;
+//    cout << "Z : " + ofToString(incomingZ, 17) << endl;
     
     ofFill();
     for(int i = 0; i < springs.size(); i++) {
@@ -134,6 +134,11 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
     // @TODO
     // for space save image
+    if(key == 's') {
+        ofImage image;
+        image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+        image.saveImage("screen.png");
+    }
 }
 
 //--------------------------------------------------------------
