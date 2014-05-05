@@ -80,9 +80,9 @@ void testApp::update(){
                     incomingZ = geoData["z"].asFloat();
                     
                     // pass incoming in to springs [1] [2] [3]
-                    springs[0].setTargetVec(incomingX, incomingY);
-                    springs[1].setTargetVec(incomingY, incomingZ);
-                    springs[2].setTargetVec(incomingX, incomingZ);
+                    springs[0].setTargetVec(incomingX, incomingY, incomingZ);
+                    springs[1].setTargetVec(incomingX, incomingY, incomingZ);
+                    springs[2].setTargetVec(incomingX, incomingY, incomingZ);
                     
                 }
             }

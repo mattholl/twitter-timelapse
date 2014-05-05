@@ -26,17 +26,17 @@ public:
     float restLength;
     float k;
     
-    ofVec2f location;
-    ofVec2f velocity;
-    ofVec2f acceleration;
-    ofVec2f targetVector;
+    ofVec3f location;
+    ofVec3f velocity;
+    ofVec3f acceleration;
+    ofVec3f targetVector;
     
     void setSpringProps(float maxForce, float maxSpeed, float restLength, float k);
     void setColour(ofColor color);
     void seek();
-    void applyForce(ofVec2f force);
+    void applyForce(ofVec3f force);
     void centrePull();
-    void setTargetVec(float first, float second);
+    void setTargetVec(float x, float y, float z);
     void update();
     void draw();
 };
