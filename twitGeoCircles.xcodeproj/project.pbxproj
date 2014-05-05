@@ -549,8 +549,8 @@
 					../../../addons/ofxNetwork/libs,
 					../../../addons/ofxNetwork/src,
 					../../../addons/ofxJSON/libs,
-					"../../../addons/ofxJSON/libs/**",
 					../../../addons/ofxJSON/src,
+					"../../../addons/ofxJSON/libs/**",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -639,6 +639,14 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxNetwork/libs,
+					../../../addons/ofxNetwork/src,
+					../../../addons/ofxJSON/libs,
+					../../../addons/ofxJSON/src,
+					"../../../addons/ofxJSON/libs/**",
+				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
