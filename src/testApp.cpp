@@ -53,13 +53,13 @@ void testApp::setup() {
     Spring spring2;
     ofColor colour2(161, 219, 217, 10); //A9DBD9
     spring2.setColour(colour2);
-    spring1.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
+    spring2.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
     springs.push_back(spring2);
     
     Spring spring3;
     ofColor colour3(0, 141, 150, 10); //#008D96 // alpha 10
     spring3.colour = colour3;
-    spring1.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
+    spring3.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
     springs.push_back(spring3);
     
 }
