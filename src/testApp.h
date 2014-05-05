@@ -32,6 +32,9 @@ public:
     int deltaTime;
     bool weConnected;
     
+    // Used to pass each incoming coords to a different spring and cycle through them
+    int selectSpring;
+    
     // Incoming JSON parse
     double incomingX, incomingY, incomingZ;
     ofxJSONElement geoData;
