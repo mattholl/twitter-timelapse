@@ -19,11 +19,19 @@ class Spring {
 public:
     Spring();
     ofColor colour;
+    
+    // Spring params
+    float maxForce;
+    float maxSpeed;
+    float restLength;
+    float k;
+    
     ofVec2f location;
     ofVec2f velocity;
     ofVec2f acceleration;
     ofVec2f targetVector;
     
+    void setSpringProps(float maxForce, float maxSpeed, float restLength, float k);
     void setColour(ofColor color);
     void seek();
     void applyForce(ofVec2f force);

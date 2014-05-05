@@ -3,7 +3,6 @@
 #include "ofMain.h"
 #include "ofxNetwork.h"
 #include "ofxJSONElement.h"
-#include "Params.h"
 #include "Spring.h"
 
 class testApp : public ofBaseApp{
