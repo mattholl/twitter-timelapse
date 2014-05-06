@@ -5,7 +5,7 @@
 #define RECONNECT_TIME = 400;
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void testApp::setup() {
     
     // don't run too fast(?);
     ofSetVerticalSync(true);
@@ -35,24 +35,31 @@ void testApp::setup(){
     
     tcpClient.send("client connected");
     
-    // each one needs a different colour
-    param.setup();
+    // Set to start at the first spring
+    selectSpring = 0;
     
     // Spring objects setup
-    // Set colours
+    // Set colour
+    // Set spring parameters
+    
+    // spring1.setSpringProps(float maxForce, float maxSpeed, float restLength, float k);
+    
     Spring spring1;
     ofColor colour1(0, 80, 108, 10); //#00506C - dark green-blue? //10 alpha
     spring1.setColour(colour1);
+    spring1.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
     springs.push_back(spring1);
     
     Spring spring2;
     ofColor colour2(161, 219, 217, 10); //A9DBD9
     spring2.setColour(colour2);
+    spring2.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
     springs.push_back(spring2);
     
     Spring spring3;
     ofColor colour3(0, 141, 150, 10); //#008D96 // alpha 10
     spring3.colour = colour3;
+    spring3.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
     springs.push_back(spring3);
     
 }
@@ -75,10 +82,12 @@ void testApp::update(){
                     incomingY = geoData["y"].asFloat();
                     incomingZ = geoData["z"].asFloat();
                     
-                    // pass incoming in to springs [1] [2] [3]
-                    springs[0].setTargetVec(incomingX, incomingY);
-                    springs[1].setTargetVec(incomingY, incomingZ);
-                    springs[2].setTargetVec(incomingX, incomingZ);
+                    // Pass the incoming coords to the springs one at a time
+                    springs[selectSpring].setTargetVec(incomingX, incomingY, incomingZ);
+                    
+                    // selectSpring will move through 0, 1, 2
+                    selectSpring++;
+                    selectSpring %= springs.size();
                     
                 }
             }
