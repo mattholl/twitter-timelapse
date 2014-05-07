@@ -12,16 +12,17 @@
 Spring::Spring() {
     
     // Start in the middle
-    location.x = ofGetWindowWidth() / 2;
-    location.y = ofGetWindowHeight() / 2;
-    location.z = 0;
+    location.set(ofGetWidth() / 2, ofGetHeight() / 2, 0);
     
-    // Set initial values to 0
+    // Set target vector to start in the middle
+    // velocity and acceleration can start at 0
+    targetVector.set(ofGetWidth() / 2, ofGetHeight() / 2);
+    
+    // Set initial values for the spring parameters
     maxForce = 0.0;
     maxSpeed = 0.0;
     restLength = 0.0;
     k = 0.0;
-    
 }
 
 void Spring::setSpringProps(float maxForce, float maxSpeed, float restLength, float k) {

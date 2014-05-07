@@ -38,16 +38,37 @@ void testApp::setup() {
     // Set to start at the first spring
     selectSpring = 0;
     
+    // Load the settings file for the spring parameters
+    if( XML.loadFile("settings.xml") ){
+		cout << "settings.xml loaded" << endl;
+	}else{
+		cout << "unable to load settings.xml check data/ folder" << endl;
+	}
+    
     // Spring objects setup
-    // Set colour
-    // Set spring parameters
+    // For each spring:
+    //      Parse the parameter values from the XML settings file
+    //      Create a colour object
+    //      Set spring parameters
+    //      Push into the springs array
     
     // spring1.setSpringProps(float maxForce, float maxSpeed, float restLength, float k);
     
     Spring spring1;
-    ofColor colour1(0, 80, 108, 10); //#00506C - dark green-blue? //10 alpha
+    
+    int s1Red = XML.getValue("spring-data:spring1:colour:r", 0);
+    int s1Blue = XML.getValue("spring-data:spring1:colour:g", 0);
+    int s1Green = XML.getValue("spring-data:spring1:colour:b", 0);
+    int s1Alpha = XML.getValue("spring-data:spring1:colour:a", 255);
+    
+    float s1MaxForce = XML.getValue("spring-data:spring1:maxForce", 0.0);
+    float s1MaxSpeed = XML.getValue("spring-data:spring1:maxSpeed", 0.0);
+    float s1RestLength = XML.getValue("spring-data:spring1:restLength", 0.0);
+    float s1K = XML.getValue("spring-data:spring1:k", 0.0);
+    
+    ofColor colour1(s1Red, s1Blue, s1Green, s1Alpha); //#00506C - dark green-blue? //10 alpha
     spring1.setColour(colour1);
-    spring1.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
+    spring1.setSpringProps(s1MaxForce, s1MaxSpeed, ofGetWindowWidth() * s1RestLength, s1K);
     springs.push_back(spring1);
     
     Spring spring2;
