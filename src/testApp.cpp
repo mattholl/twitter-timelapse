@@ -203,7 +203,7 @@ void testApp::saveImage() {
         // Save the image to the dir from XML settings, path should end in /
         string path = saveImagePath;
         
-        image.saveImage(path + "frame_" + ofToString(ofGetUnixTime()) + "_high.png");
+        image.saveImage(path + "screengrab_" + ofToString(ofGetUnixTime()) + ".png");
         
         lastSaveTime = elapsedTime;
     }
