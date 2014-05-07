@@ -42,4 +42,12 @@ public:
     
     // Load the settings from bin/data/settings.xml
     ofxXmlSettings XML;
+    
+    // Periodic image saving
+    int saveTimeout;        // Read this from settings.xml
+    int lastSaveTime;       // Update each time an image is saved
+    void saveImage();
+    
+    // Get dir where the image should be saved
+    string saveImagePath;
 };

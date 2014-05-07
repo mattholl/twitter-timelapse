@@ -105,6 +105,14 @@ void testApp::setup() {
     spring3.setSpringProps(s3MaxForce, s3MaxSpeed, ofGetWindowWidth() * s3RestLength, s3K);
     springs.push_back(spring3);
     
+    // Get the frequency with images should be saved from the settings.xml file
+    saveTimeout = XML.getValue("spring-data:save-image-timeout", 0.0);
+    
+    // Set the initial time to zero, this will get updated each time an image is saved
+    lastSaveTime = 0;
+    
+    // Get the dir path to save, might be a network drive or local
+    saveImagePath = XML.getValue("spring-data:save-image-path", "");
 }
 
 //--------------------------------------------------------------
@@ -152,7 +160,9 @@ void testApp::update(){
     for(int i = 0; i < springs.size(); i++) {
         springs[i].update();
     }
-
+    
+    // Check whether an image should be saved
+    saveImage();
     
 }
 
@@ -178,19 +188,36 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
+
+void testApp::saveImage() {
+    
+    // Check if current elapsed time in seconds equals lastSaveTime + saveTimeout
+    
+    int elapsedTime = (int)ofGetElapsedTimef();
+    int timeDiff = elapsedTime - lastSaveTime;
+    
+    if(timeDiff == saveTimeout) {
+        ofImage image;
+        image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+
+        // Save the image to the dir from XML settings, path should end in /
+        string path = saveImagePath;
+        
+        image.saveImage(path + "frame_" + ofToString(ofGetUnixTime()) + "_high.png");
+        
+        lastSaveTime = elapsedTime;
+    }
+
+}
+
+//--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-    // @TODO
-    // for space save image
-    if(key == 's') {
-        ofImage image;
-        image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
-        image.saveImage("frame_" + ofToString(ofGetUnixTime()) + "_high.png");
-    }
+
 }
 
 //--------------------------------------------------------------
