@@ -72,15 +72,37 @@ void testApp::setup() {
     springs.push_back(spring1);
     
     Spring spring2;
-    ofColor colour2(161, 219, 217, 10); //A9DBD9
+    
+    int s2Red = XML.getValue("spring-data:spring2:colour:r", 0);
+    int s2Blue = XML.getValue("spring-data:spring2:colour:g", 0);
+    int s2Green = XML.getValue("spring-data:spring2:colour:b", 0);
+    int s2Alpha = XML.getValue("spring-data:spring2:colour:a", 255);
+    
+    float s2MaxForce = XML.getValue("spring-data:spring2:maxForce", 0.0);
+    float s2MaxSpeed = XML.getValue("spring-data:spring2:maxSpeed", 0.0);
+    float s2RestLength = XML.getValue("spring-data:spring2:restLength", 0.0);
+    float s2K = XML.getValue("spring-data:spring2:k", 0.0);
+
+    ofColor colour2(s2Red, s2Green, s2Blue, s2Alpha); //A9DBD9
     spring2.setColour(colour2);
-    spring2.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
+    spring2.setSpringProps(s2MaxForce, s2MaxSpeed, ofGetWindowWidth() * s2RestLength, s2K);
     springs.push_back(spring2);
     
     Spring spring3;
-    ofColor colour3(0, 141, 150, 10); //#008D96 // alpha 10
+    
+    int s3Red = XML.getValue("spring-data:spring3:colour:r", 0);
+    int s3Blue = XML.getValue("spring-data:spring3:colour:g", 0);
+    int s3Green = XML.getValue("spring-data:spring3:colour:b", 0);
+    int s3Alpha = XML.getValue("spring-data:spring3:colour:a", 255);
+    
+    float s3MaxForce = XML.getValue("spring-data:spring3:maxForce", 0.0);
+    float s3MaxSpeed = XML.getValue("spring-data:spring3:maxSpeed", 0.0);
+    float s3RestLength = XML.getValue("spring-data:spring3:restLength", 0.0);
+    float s3K = XML.getValue("spring-data:spring3:k", 0.0);
+    
+    ofColor colour3(s3Red, s3Green, s3Blue, s3Alpha); //#008D96 // alpha 10
     spring3.colour = colour3;
-    spring3.setSpringProps(0.5, 1.0, ofGetWindowWidth() * 0.24, 0.009);
+    spring3.setSpringProps(s3MaxForce, s3MaxSpeed, ofGetWindowWidth() * s3RestLength, s3K);
     springs.push_back(spring3);
     
 }
