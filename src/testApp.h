@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxNetwork.h"
 #include "ofxJSONElement.h"
+#include "ofxXmlSettings.h"
 #include "Spring.h"
 
 class testApp : public ofBaseApp{
@@ -24,10 +25,7 @@ public:
     
     // TCP Client
     ofxTCPClient tcpClient;
-    
-    ofTrueTypeFont mono;
-    ofTrueTypeFont monosm;
-    
+
     int connectTime;
     int deltaTime;
     bool weConnected;
@@ -41,4 +39,7 @@ public:
     
     // Set up spring objects
     vector<Spring> springs;
+    
+    // Load the settings from bin/data/settings.xml
+    ofxXmlSettings XML;
 };

@@ -32,6 +32,10 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 		EC06B5851902DFAB00DB7BE7 /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC06B5831902DFAB00DB7BE7 /* Spring.cpp */; };
+		EC09B583191AABE900DC9549 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC09B57C191AABE800DC9549 /* tinyxml.cpp */; };
+		EC09B584191AABE900DC9549 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC09B57E191AABE800DC9549 /* tinyxmlerror.cpp */; };
+		EC09B585191AABE900DC9549 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC09B57F191AABE800DC9549 /* tinyxmlparser.cpp */; };
+		EC09B586191AABE900DC9549 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC09B581191AABE800DC9549 /* ofxXmlSettings.cpp */; };
 		EC43B9FA18FF290600693E32 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E118FF290600693E32 /* json_reader.cpp */; };
 		EC43B9FB18FF290600693E32 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E318FF290600693E32 /* json_value.cpp */; };
 		EC43B9FC18FF290600693E32 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43B9E518FF290600693E32 /* json_writer.cpp */; };
@@ -105,6 +109,12 @@
 		EC06B5841902DFAB00DB7BE7 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
 		EC09047A18E4CE35009505D6 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.md; sourceTree = SOURCE_ROOT; };
 		EC09B5721917C97F00DC9549 /* notes.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.md; sourceTree = "<group>"; };
+		EC09B57C191AABE800DC9549 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		EC09B57D191AABE800DC9549 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		EC09B57E191AABE800DC9549 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		EC09B57F191AABE800DC9549 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		EC09B581191AABE800DC9549 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		EC09B582191AABE800DC9549 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		EC43B9D518FF290600693E32 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
 		EC43B9D618FF290600693E32 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		EC43B9D718FF290600693E32 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
@@ -184,6 +194,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				EC09B57A191AABE800DC9549 /* ofxXmlSettings */,
 				EC43B98418FF290400693E32 /* ofxJSON */,
 				18240ECCE4076FB0833A8578 /* ofxNetwork */,
 			);
@@ -271,6 +282,36 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		EC09B57A191AABE800DC9549 /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				EC09B57B191AABE800DC9549 /* libs */,
+				EC09B580191AABE800DC9549 /* src */,
+			);
+			name = ofxXmlSettings;
+			path = ../../../addons/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		EC09B57B191AABE800DC9549 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				EC09B57C191AABE800DC9549 /* tinyxml.cpp */,
+				EC09B57D191AABE800DC9549 /* tinyxml.h */,
+				EC09B57E191AABE800DC9549 /* tinyxmlerror.cpp */,
+				EC09B57F191AABE800DC9549 /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		EC09B580191AABE800DC9549 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EC09B581191AABE800DC9549 /* ofxXmlSettings.cpp */,
+				EC09B582191AABE800DC9549 /* ofxXmlSettings.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		EC43B98418FF290400693E32 /* ofxJSON */ = {
@@ -436,7 +477,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC43B9FA18FF290600693E32 /* json_reader.cpp in Sources */,
+				EC09B583191AABE900DC9549 /* tinyxml.cpp in Sources */,
 				EC06B5851902DFAB00DB7BE7 /* Spring.cpp in Sources */,
+				EC09B586191AABE900DC9549 /* ofxXmlSettings.cpp in Sources */,
 				EC43B9FD18FF290600693E32 /* ofxJSONElement.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
@@ -444,8 +487,10 @@
 				125506CD3E5F428AAFE5CC65 /* ofxTCPManager.cpp in Sources */,
 				EC43B9FC18FF290600693E32 /* json_writer.cpp in Sources */,
 				66CA411C5A9664E27326BF36 /* ofxTCPServer.cpp in Sources */,
+				EC09B585191AABE900DC9549 /* tinyxmlparser.cpp in Sources */,
 				EC43B9FB18FF290600693E32 /* json_value.cpp in Sources */,
 				E2564CF7DDB3713772BB682E /* ofxUDPManager.cpp in Sources */,
+				EC09B584191AABE900DC9549 /* tinyxmlerror.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
