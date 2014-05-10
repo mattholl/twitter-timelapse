@@ -205,6 +205,9 @@ void testApp::saveImage() {
         
         image.saveImage(path + "screengrab_" + ofToString(ofGetUnixTime()) + ".png");
         
+        // Clear the background after the image saves
+        ofBackground(255, 255, 255);
+        
         lastSaveTime = elapsedTime;
     }
 
