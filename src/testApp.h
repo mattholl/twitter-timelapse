@@ -50,4 +50,7 @@ public:
     
     // Get dir where the image should be saved
     string saveImagePath;
+    
+    // FBO for accumulated drawing ofSetBackgroundAuto(false); doesn't work on the raspberry pi
+    ofFbo accumulatedFBO;
 };

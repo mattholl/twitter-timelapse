@@ -9,14 +9,13 @@ void testApp::setup() {
     
     // don't run too fast(?);
     ofSetVerticalSync(true);
-    
-    ofEnableSmoothing();
-    
-    // Disable automatic background clearing
-    ofSetBackgroundAuto(false);
+        
+    accumulatedFBO.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
     
     // Clear the background to white once
-    ofBackground(255, 255, 255);
+    accumulatedFBO.begin();
+        ofBackground(255, 255, 255);
+    accumulatedFBO.end();
     
     // TCP Connection
     // Initial values for x, y, z
@@ -161,15 +160,27 @@ void testApp::update(){
         springs[i].update();
     }
     
-    // Check whether an image should be saved
-    saveImage();
+    accumulatedFBO.begin();
+        ofEnableAlphaBlending();
+        ofEnableSmoothing();
+    
+//        glEnable(GL_BLEND);
+//        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+        ofSetColor(20, 20, 20, 255);
+    
+        for(int i = 0; i < springs.size(); i++) {
+            springs[i].draw();
+        }
+    
+        ofDisableSmoothing();
+        ofDisableAlphaBlending();
+    accumulatedFBO.end();
     
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofEnableAlphaBlending();
-    ofSetColor(20, 20, 20);
 
     if (!weConnected) {
         cout << "status: server not found" << endl;
@@ -179,12 +190,14 @@ void testApp::draw(){
 //    cout << "Y : " + ofToString(incomingY, 17) << endl;
 //    cout << "Z : " + ofToString(incomingZ, 17) << endl;
     
-    ofFill();
-    for(int i = 0; i < springs.size(); i++) {
-        springs[i].draw();
-    }
+    ofBackground(255, 255, 255);
+    ofSetColor(255, 255, 255, 255);
     
-    ofDisableAlphaBlending();
+    // Draw the fbo to the screen
+    accumulatedFBO.draw(0,0);
+    
+    // Check whether an image should be saved
+    saveImage();
 }
 
 //--------------------------------------------------------------
@@ -207,6 +220,11 @@ void testApp::saveImage() {
         
         // Clear the background after the image saves
         ofBackground(255, 255, 255);
+        
+        // Clear the fbo
+        accumulatedFBO.begin();
+            ofClear(255,255,255, 0);
+        accumulatedFBO.end();
         
         lastSaveTime = elapsedTime;
     }
