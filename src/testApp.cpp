@@ -112,6 +112,9 @@ void testApp::setup() {
     
     // Get the dir path to save, might be a network drive or local
     saveImagePath = XML.getValue("spring-data:save-image-path", "");
+    
+    // Need to check whether the image is being saved - ofxNetwork throws errors on the raspberry pi
+    isSavingImage = false;
 }
 
 //--------------------------------------------------------------
@@ -120,30 +123,35 @@ void testApp::update(){
     // Update incoming values with JSON values from node.js TCP server
     
     if (weConnected) {
-        if(tcpClient.isConnected()) {
-            string str = tcpClient.receive();
-            
-            if(str.length() > 0) {
+        
+        // Don't try to get read from tcp if the image is bring saved
+        // ofxNetwork throws errors on the pi
+        if(!isSavingImage) {
+            if(tcpClient.isConnected()) {
+                string str = tcpClient.receive();
                 
-                bool parsed = geoData.parse(str);
-                
-                if (parsed) {
-                    incomingX = geoData["x"].asFloat();
-                    incomingY = geoData["y"].asFloat();
-                    incomingZ = geoData["z"].asFloat();
+                if(str.length() > 0) {
                     
-                    // Pass the incoming coords to the springs one at a time
-                    springs[selectSpring].setTargetVec(incomingX, incomingY, incomingZ);
+                    bool parsed = geoData.parse(str);
                     
-                    // selectSpring will move through 0, 1, 2
-                    selectSpring++;
-                    selectSpring %= springs.size();
-                    
+                    if (parsed) {
+                        incomingX = geoData["x"].asFloat();
+                        incomingY = geoData["y"].asFloat();
+                        incomingZ = geoData["z"].asFloat();
+                        
+                        // Pass the incoming coords to the springs one at a time
+                        springs[selectSpring].setTargetVec(incomingX, incomingY, incomingZ);
+                        
+                        // selectSpring will move through 0, 1, 2
+                        selectSpring++;
+                        selectSpring %= springs.size();
+                        
+                    }
                 }
+                
+            } else {
+                weConnected = false;
             }
-            
-        } else {
-            weConnected = false;
         }
         
     } else {
@@ -210,6 +218,10 @@ void testApp::saveImage() {
     int timeDiff = elapsedTime - lastSaveTime;
     
     if(timeDiff == saveTimeout) {
+        
+        // Stop trying to read from the network
+        isSavingImage = true;
+        
         ofImage image;
         image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
 
@@ -227,6 +239,9 @@ void testApp::saveImage() {
         accumulatedFBO.end();
         
         lastSaveTime = elapsedTime;
+        
+        // Allow network communication again
+        isSavingImage = false;
     }
 
 }

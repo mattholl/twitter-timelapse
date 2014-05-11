@@ -53,4 +53,7 @@ public:
     
     // FBO for accumulated drawing ofSetBackgroundAuto(false); doesn't work on the raspberry pi
     ofFbo accumulatedFBO;
+    
+    // Prevent errors from ofxNetwork
+    bool isSavingImage;
 };
