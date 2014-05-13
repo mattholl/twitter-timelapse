@@ -2,8 +2,6 @@
 
 #include "testApp.h"
 
-#define RECONNECT_TIME = 400;
-
 //--------------------------------------------------------------
 void testApp::setup() {
 
@@ -17,26 +15,14 @@ void testApp::setup() {
         ofBackground(255, 255, 255);
     accumulatedFBO.end();
 
-    // TCP Connection
     // Initial values for x, y, z
     incomingX = 0.0;
     incomingY = 0.0;
     incomingZ = 0.0;
-
-    // try to connect if it fails retry every few seconds
-//    weConnected = tcpClient.setup("127.0.0.1", 3001);
-//    tcpClient.setMessageDelimiter("\n");
-//
-//    connectTime = 0;
-//    deltaTime = 0;
-//
-//    tcpClient.setVerbose(true);
-//
-//    tcpClient.send("client connected");
-
+    
+    // Set up to listen for OSC messages
     cout << "listening for osc messages on port " << PORT << "\n";
 	oscReceiver.setup(PORT);
-    current_msg_string = 0;
     
     // Set to start at the first spring
     selectSpring = 0;
@@ -126,6 +112,8 @@ void testApp::update(){
 
     // Update incoming values with JSON values from node.js OSC sender
 
+//    if(!isSavingImage) {
+    
     while(oscReceiver.hasWaitingMessages()) {
         ofxOscMessage m;
 		oscReceiver.getNextMessage(&m);
@@ -153,47 +141,6 @@ void testApp::update(){
         }
     }
     
-//    if (weConnected) {
-//
-//        // Don't try to get read from tcp if the image is bring saved
-//        // ofxNetwork throws errors on the pi
-//        if(!isSavingImage) {
-//            if(tcpClient.isConnected()) {
-//                string str = tcpClient.receive();
-//
-//                if(str.length() > 0) {
-//
-//                    bool parsed = geoData.parse(str);
-//
-//                    if (parsed) {
-//                        incomingX = geoData["x"].asFloat();
-//                        incomingY = geoData["y"].asFloat();
-//                        incomingZ = geoData["z"].asFloat();
-//
-//                        // Pass the incoming coords to the springs one at a time
-//                        springs[selectSpring].setTargetVec(incomingX, incomingY, incomingZ);
-//
-//                        // selectSpring will move through 0, 1, 2
-//                        selectSpring++;
-//                        selectSpring %= springs.size();
-//
-//                    }
-//                }
-//
-//            } else {
-//                weConnected = false;
-//            }
-//        }
-//
-//    } else {
-//        deltaTime = ofGetElapsedTimeMillis() - connectTime;
-//
-//        if(deltaTime > 5000) {
-//            weConnected = tcpClient.setup("127.0.0.1", 3001);
-//            connectTime = ofGetElapsedTimeMillis();
-//        }
-//    }
-
     // Call update for each spring
     for(unsigned int i = 0; i < springs.size(); i++) {
         springs[i].update();
@@ -220,10 +167,6 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
-//    if (!weConnected) {
-//        cout << "status: server not found" << endl;
-//    }
 
 //    cout << "X : " + ofToString(incomingX, 17) << endl;
 //    cout << "Y : " + ofToString(incomingY, 17) << endl;
