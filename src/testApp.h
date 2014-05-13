@@ -1,10 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxNetwork.h"
-#include "ofxJSONElement.h"
 #include "ofxXmlSettings.h"
 #include "Spring.h"
+#include "ofxOsc.h"
+
+#define PORT 3001
 
 class testApp : public ofBaseApp{
 
@@ -23,19 +24,14 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    // TCP Client
-    ofxTCPClient tcpClient;
-
-    int connectTime;
-    int deltaTime;
-    bool weConnected;
+    // OSC Receiver
+    ofxOscReceiver oscReceiver;
     
     // Used to pass each incoming coords to a different spring and cycle through them
     int selectSpring;
     
     // Incoming JSON parse
     double incomingX, incomingY, incomingZ;
-    ofxJSONElement geoData;
     
     // Set up spring objects
     vector<Spring> springs;
