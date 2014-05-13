@@ -31,7 +31,7 @@ public:
     int selectSpring;
     
     // Incoming JSON parse
-    float incomingX, incomingY, incomingZ;
+    double incomingX, incomingY, incomingZ;
     
     // Set up spring objects
     vector<Spring> springs;

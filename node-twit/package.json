@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "twitter": "~0.2.9",
-    "commander": "~2.2.0"
+    "commander": "~2.2.0",
+    "omgosc": "~1.0.0"
   }
 }
