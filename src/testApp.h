@@ -1,10 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxNetwork.h"
 #include "ofxJSONElement.h"
 #include "ofxXmlSettings.h"
 #include "Spring.h"
+#include "ofxOsc.h"
+
+#define PORT 12345
 
 class testApp : public ofBaseApp{
 
@@ -24,17 +26,15 @@ public:
     void gotMessage(ofMessage msg);
     
     // TCP Client
-    ofxTCPClient tcpClient;
+    ofxOscReceiver oscReceiver;
 
-    int connectTime;
-    int deltaTime;
-    bool weConnected;
+    int current_msg_string;
     
     // Used to pass each incoming coords to a different spring and cycle through them
     int selectSpring;
     
     // Incoming JSON parse
-    double incomingX, incomingY, incomingZ;
+    float incomingX, incomingY, incomingZ;
     ofxJSONElement geoData;
     
     // Set up spring objects
