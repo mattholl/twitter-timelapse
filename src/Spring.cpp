@@ -117,7 +117,7 @@ void Spring::draw() {
     ofVec3f centre(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, 0);
     
     // draw circle at the end
-    ofCircle(location, size);
+//    ofCircle(location, size);
     
     // draw line from window centre to point
     ofLine(location, centre);
