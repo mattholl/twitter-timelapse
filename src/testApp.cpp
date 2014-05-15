@@ -207,7 +207,7 @@ void testApp::saveImage() {
         string path = saveImagePath;
 
         image.saveImage(path + "screengrab_" + ofToString(ofGetUnixTime()) + ".png");
-        cout << "Image saved : " + "screengrab_" + ofToString(ofGetUnixTime()) + ".png" << endl;
+        cout << "Image saved : screengrab_" + ofToString(ofGetUnixTime()) + ".png" << endl;
 
         // Clear the background after the image saves
         ofBackground(255, 255, 255);
