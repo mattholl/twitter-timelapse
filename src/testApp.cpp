@@ -5,6 +5,8 @@
 //--------------------------------------------------------------
 void testApp::setup() {
 
+    ofHideCursor();
+
     // don't run too fast(?);
     ofSetVerticalSync(true);
 
@@ -19,11 +21,11 @@ void testApp::setup() {
     incomingX = 0.0;
     incomingY = 0.0;
     incomingZ = 0.0;
-    
+
     // Set up to listen for OSC messages
     cout << "listening for osc messages on port " << PORT << "\n";
 	oscReceiver.setup(PORT);
-    
+
     // Set to start at the first spring
     selectSpring = 0;
 
@@ -113,17 +115,17 @@ void testApp::update(){
     // Update incoming values with JSON values from node.js OSC sender
 
 //    if(!isSavingImage) {
-    
+
     while(oscReceiver.hasWaitingMessages()) {
         ofxOscMessage m;
 		oscReceiver.getNextMessage(&m);
-        
+
         if(m.getAddress() == "/coords") {
-            
+
             if(m.getArgType(0) == OFXOSC_TYPE_FLOAT) {
                 incomingX = m.getArgAsFloat(0);
             }
-            
+
             if(m.getArgType(1) == OFXOSC_TYPE_FLOAT) {
                 incomingY = m.getArgAsFloat(1);
             }
@@ -131,16 +133,16 @@ void testApp::update(){
             if(m.getArgType(2) == OFXOSC_TYPE_FLOAT) {
                 incomingY = m.getArgAsFloat(2);
             }
-                        
+
             // Pass the incoming coords to the springs one at a time
             springs[selectSpring].setTargetVec(incomingX, incomingY, incomingZ);
-            
+
             // selectSpring will move through 0, 1, 2
             selectSpring++;
             selectSpring %= springs.size();
         }
     }
-    
+
     // Call update for each spring
     for(unsigned int i = 0; i < springs.size(); i++) {
         springs[i].update();
@@ -205,6 +207,7 @@ void testApp::saveImage() {
         string path = saveImagePath;
 
         image.saveImage(path + "screengrab_" + ofToString(ofGetUnixTime()) + ".png");
+        cout << "Image saved : " + "screengrab_" + ofToString(ofGetUnixTime()) + ".png" << endl;
 
         // Clear the background after the image saves
         ofBackground(255, 255, 255);
