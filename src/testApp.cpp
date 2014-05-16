@@ -122,16 +122,19 @@ void testApp::update(){
 
         if(m.getAddress() == "/coords") {
 
-            if(m.getArgType(0) == OFXOSC_TYPE_FLOAT) {
-                incomingX = m.getArgAsFloat(0);
+            if(m.getArgType(0) == OFXOSC_TYPE_STRING) {
+                string tempX = m.getArgAsString(0);
+                incomingX = std::atof(tempX.c_str());
             }
 
-            if(m.getArgType(1) == OFXOSC_TYPE_FLOAT) {
-                incomingY = m.getArgAsFloat(1);
+            if(m.getArgType(1) == OFXOSC_TYPE_STRING) {
+                string tempY = m.getArgAsString(1);
+                incomingY = std::atof(tempY.c_str());
             }
 
-            if(m.getArgType(2) == OFXOSC_TYPE_FLOAT) {
-                incomingY = m.getArgAsFloat(2);
+            if(m.getArgType(2) == OFXOSC_TYPE_STRING) {
+                string tempZ = m.getArgAsString(2);
+                incomingZ = std::atof(tempZ.c_str());
             }
 
             // Pass the incoming coords to the springs one at a time
