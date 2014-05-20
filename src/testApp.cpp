@@ -230,7 +230,23 @@ void testApp::saveImage() {
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    
+    // If the s key is pressed save an image to the file save path but don't clear the buffer
+    
+    if(key == 's') {
+        isSavingImage = true;
+        
+        ofImage image;
+        image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+        
+        // Save the image to the dir from XML settings, path should end in /
+        string path = saveImagePath;
+        
+        image.saveImage(path + "screengrab_" + ofToString(ofGetUnixTime()) + ".png");
+        cout << "Manual image saved : screengrab_" + ofToString(ofGetUnixTime()) + ".png" << endl;
+        
+        isSavingImage = false;
+    }
 }
 
 //--------------------------------------------------------------
