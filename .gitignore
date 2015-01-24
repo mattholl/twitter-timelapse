@@ -106,6 +106,6 @@ Desktop.ini
 
 ###
 notes.md
-node_modules/*
+*/node_modules/*
 bin/data/settings.xml
 bin/data/settings-old.xml
