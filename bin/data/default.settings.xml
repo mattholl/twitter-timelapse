@@ -1,0 +1,56 @@
+<!-- Default spring settings -->
+<!-- <spring1>
+        <colour>
+            <r>0</r>
+            <g>80</g>
+            <b>108</b>
+            <a>10</a>
+        </colour>
+        <maxForce>0.5</maxForce>
+        <maxSpeed>1.0</maxSpeed>
+        <restLength>0.24</restLength>
+        <k>0.009</k>
+    </spring1> -->
+<spring-data>
+    <!-- shortest spring -->
+    <spring1>
+        <colour>
+            <r>0</r><!-- <r>0</r> -->
+            <g>80</g>
+            <b>108</b>
+            <a>10</a>
+        </colour>
+        <maxForce>15.4</maxForce>
+        <maxSpeed>5.0</maxSpeed>
+        <restLength>0.14</restLength>
+        <k>0.05</k>
+    </spring1>
+    <!-- longest spring -->
+    <spring2>
+        <colour>
+            <r>161</r>
+            <g>219</g>
+            <b>217</b>
+            <a>10</a>
+        </colour>
+        <maxForce>0.9</maxForce>
+        <maxSpeed>10.0</maxSpeed>
+        <restLength>0.07</restLength>
+        <k>0.005</k>
+    </spring2>
+    <!-- middle spring -->
+    <spring3>
+        <colour>
+            <r>0</r>
+            <g>141</g>
+            <b>150</b>
+            <a>10</a>
+        </colour>
+        <maxForce>1.5</maxForce>
+        <maxSpeed>4.0</maxSpeed>
+        <restLength>0.104</restLength>
+        <k>0.01</k>
+    </spring3>
+    <save-image-timeout>7200</save-image-timeout>
+    <save-image-path>/absolute/path/to/imageDir</save-image-path>
+</spring-data>
