@@ -1,9 +1,9 @@
 # twitter_timelapse
 Code for [twitter-timelapse.tumblr.com](http://twitter-timelapse.tumblr.com) image rendering.
 
-A Raspberry Pi was used to to render the images from this app over a number of days last year.
+A Raspberry Pi was used to to post the images rendered from this app every 6 hours over a number of days last year.
 
-The whole process didn't perform well on the Pi alone so a small netbook was also used with data made available using OSC.
+The whole process didn't perform well on the Pi alone so a small netbook was also used with the tweet geodata made available using OSC.
 
 ## Processes
 1. node.js
@@ -16,7 +16,7 @@ The whole process didn't perform well on the Pi alone so a small netbook was als
     - Post the image to tumblr usin the API
     - Move the image into a completed uploads folder
 
-### Step 1
+### Process 1
 Connect to the twitter stream API and push the geocoordinates of each matching tweet to a local port.
 
 ```
@@ -29,10 +29,10 @@ Connect to the twitter stream API and push the geocoordinates of each matching t
     $ node node-twit/index.js -t  -r 10
 ```
 
-### Step 2
+### Process 2
 With the correct ip and port set run the openFrameworks app.
 
-### Step 3
+### Process 3
 In a separate process:
 
 ```
