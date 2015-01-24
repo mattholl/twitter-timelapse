@@ -11,7 +11,7 @@ program
   .version('0.0.0')
   .option('-t, --text [string or #string]', 'Filter tweets containing the specified text or hashtag. Comma separated.')
   .option('-r, --retain [number]', 'Use every x tweet to limit rate. Defaults to 10')
-  .option('-d, --debug', 'Send to stdout')
+  .option('-d, --debug', 'Print to stdout')
   .parse(process.argv);
 
 var timeCheck = {
