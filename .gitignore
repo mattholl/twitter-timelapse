@@ -103,4 +103,7 @@ Desktop.ini
 #########################
 
 .mailmap
+
+###
+notes.md
 node_modules/*
