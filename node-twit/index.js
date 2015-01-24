@@ -4,12 +4,13 @@ var osc = require('omgosc');
 
 // TCP port
 var PORT = 3001;
+var DEBUG = false;
 
 // Parse argv
 program
   .version('0.0.0')
   .option('-t, --text [string or #string]', 'Filter tweets containing the specified text or hashtag. Comma separated.')
-  .option('-r, --retain [number]', 'Use every x tweet to limit rate.')
+  .option('-r, --retain [number]', 'Use every x tweet to limit rate. Defaults to 10')
   .option('-d, --debug', 'Send to stdout')
   .parse(process.argv);
 
@@ -19,17 +20,15 @@ var timeCheck = {
     lastTime : 0
 };
 
-var keep = program.retain;
+var keep = program.retain || 10;
 var tweetCount = 0;
 
 var apiKey = require('./key.json');
 
-console.log(apiKey);
-
 var twitApi = new twitter(apiKey);
 
-var oscSender = new osc.UdpSender('192.168.1.72', PORT);
-// var oscSender = new osc.UdpSender('127.0.0.1', PORT);
+// var oscSender = new osc.UdpSender('192.168.1.72', PORT);
+var oscSender = new osc.UdpSender('127.0.0.1', PORT);
 
 // get all geo tagged tweets
 var filter = {
@@ -39,6 +38,10 @@ var filter = {
 // if text is specified - uses OR
 if(program.text) {
     filter.track = program.text;
+}
+
+if(program.debug) {
+    DEBUG = true;
 }
 
 // Keep variable reference here
@@ -61,6 +64,10 @@ function refreshStream() {
                     // Turn the lat, lon geocoords into Cartesian.
                     // cartObj = {x: float, y: float, z: float}
                     var cartObj = toECEFEarth(data.coordinates.coordinates[0], data.coordinates.coordinates[1]);
+
+                    if(DEBUG) {
+                        console.log(cartObj);
+                    }
 
                     // Push the Cartesian object to the OSC port for openframeworks
                     // send them as strings - OF will convert them to floats
