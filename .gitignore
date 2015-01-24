@@ -109,3 +109,4 @@ notes.md
 */node_modules/*
 bin/data/settings.xml
 bin/data/settings-old.xml
+**/key.json
