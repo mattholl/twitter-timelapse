@@ -103,4 +103,4 @@ Desktop.ini
 #########################
 
 .mailmap
-
+node_modules/*

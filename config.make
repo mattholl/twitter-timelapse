@@ -38,7 +38,7 @@
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
 # PROJECT_EXTERNAL_SOURCE_PATHS =
-# PROJECT_EXTERNAL_SOURCE_PATHS = $(OF_ROOT)/addons/ofxJSON/src
+
 ################################################################################
 # PROJECT EXCLUSIONS
 #   These makefiles assume that all folders in your current project directory
@@ -80,7 +80,6 @@ PROJECT_EXCLUSIONS += $(PROJECT_ROOT)/tumblr-post%
 # incorporated directly into the final executable application binary.
 # TODO: should this be a default setting?
 # PROJECT_LDFLAGS=-Wl,-rpath=./libs
-# PROJECT_LDFLAGS=-Wl,-rpath=./libs $(shell pkg-config jsoncpp --libs)
 
 ################################################################################
 # PROJECT DEFINES
@@ -109,7 +108,6 @@ PROJECT_EXCLUSIONS += $(PROJECT_ROOT)/tumblr-post%
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
 # PROJECT_CFLAGS =
-# PROJECT_CFLAGS = $(shell pkg-config jsoncpp --cflags)
 
 ################################################################################
 # PROJECT OPTIMIZATION CFLAGS
