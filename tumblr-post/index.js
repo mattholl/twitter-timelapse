@@ -15,6 +15,7 @@ var key = require('./key.json');
 var postTestApi = new Tumblr(key.oauth, key.tumblr_blog_url);
 
 var watcher = chokidar.watch(key.READ_FILE_PATH, {ignored: /[\/\\]\./, persistent: true});
+console.log('Waiting for images to appear in ' + key.READ_FILE_PATH);
 
 watcher.on('add', function(absPath) {
     checkFile(absPath);
