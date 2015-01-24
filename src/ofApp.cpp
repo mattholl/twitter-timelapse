@@ -192,7 +192,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 
-void testApp::saveImage() {
+void ofApp::saveImage() {
 
     // Check if current elapsed time in seconds equals lastSaveTime + saveTimeout
 
